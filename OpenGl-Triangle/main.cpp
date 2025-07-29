@@ -1,4 +1,4 @@
-#include <GL/glew.h>
+﻿#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
@@ -76,20 +76,57 @@ int main() {
     glfwSetCursorPosCallback(window, mouse_callback);
 
     float vertices[] = {
-        // cube
-        -0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,
-         0.5f,  0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f, -0.5f, -0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f, -0.5f,  0.5f, -0.5f, -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f,  0.5f,  0.5f, -0.5f,  0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,
-        -0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,
-         0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f, -0.5f,
-        -0.5f,  0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f, -0.5f
+        // position             // color (different for each vertex!)
+
+        // back wall
+        -0.5f, -0.5f, -0.5f,    1.0f, 0.0f, 0.0f,  // red
+         0.5f, -0.5f, -0.5f,    1.0f, 0.5f, 0.0f,  // orange
+         0.5f,  0.5f, -0.5f,    1.0f, 1.0f, 0.0f,  // yellow
+         0.5f,  0.5f, -0.5f,    1.0f, 1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,    0.5f, 1.0f, 0.0f,  // lime
+        -0.5f, -0.5f, -0.5f,    1.0f, 0.0f, 0.0f,
+
+        // front wall
+        -0.5f, -0.5f,  0.5f,    0.0f, 1.0f, 0.0f,  // green
+         0.5f, -0.5f,  0.5f,    0.0f, 1.0f, 0.5f,
+         0.5f,  0.5f,  0.5f,    0.0f, 1.0f, 1.0f,  // cyan
+         0.5f,  0.5f,  0.5f,    0.0f, 1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,    0.0f, 0.5f, 1.0f,
+        -0.5f, -0.5f,  0.5f,    0.0f, 1.0f, 0.0f,
+
+        // right wall
+         0.5f, -0.5f, -0.5f,    0.0f, 0.0f, 1.0f,  // blue
+         0.5f,  0.5f, -0.5f,    0.3f, 0.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,    0.6f, 0.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,    0.6f, 0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,    0.9f, 0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,    0.0f, 0.0f, 1.0f,
+
+         // left wall
+         -0.5f, -0.5f, -0.5f,    1.0f, 1.0f, 0.0f,  // yellow
+         -0.5f,  0.5f, -0.5f,    0.8f, 0.8f, 0.0f,
+         -0.5f,  0.5f,  0.5f,    0.6f, 0.6f, 0.0f,
+         -0.5f,  0.5f,  0.5f,    0.6f, 0.6f, 0.0f,
+         -0.5f, -0.5f,  0.5f,    0.4f, 0.4f, 0.0f,
+         -0.5f, -0.5f, -0.5f,    1.0f, 1.0f, 0.0f,
+
+         // bottom wall
+         -0.5f, -0.5f, -0.5f,    0.0f, 1.0f, 1.0f,  // cyan
+          0.5f, -0.5f, -0.5f,    0.0f, 0.8f, 1.0f,
+          0.5f, -0.5f,  0.5f,    0.0f, 0.6f, 1.0f,
+          0.5f, -0.5f,  0.5f,    0.0f, 0.6f, 1.0f,
+         -0.5f, -0.5f,  0.5f,    0.0f, 0.4f, 1.0f,
+         -0.5f, -0.5f, -0.5f,    0.0f, 1.0f, 1.0f,
+
+         // top wall
+         -0.5f,  0.5f, -0.5f,    1.0f, 0.0f, 0.8f,  // magenta
+          0.5f,  0.5f, -0.5f,    0.8f, 0.0f, 0.8f,
+          0.5f,  0.5f,  0.5f,    0.6f, 0.0f, 0.6f,
+          0.5f,  0.5f,  0.5f,    0.6f, 0.0f, 0.6f,
+         -0.5f,  0.5f,  0.5f,    0.8f, 0.8f, 0.4f,
+         -0.5f,  0.5f, -0.5f,    1.0f, 0.0f, 1.0f,
     };
+
 
     GLuint VAO, VBO;
     glGenVertexArrays(1, &VAO);
@@ -100,8 +137,14 @@ int main() {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	// position
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+
+    // color
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
 
     std::string vertexCode = readFile("shader.vert");
     std::string fragmentCode = readFile("shader.frag");
